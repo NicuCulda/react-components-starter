@@ -1,49 +1,44 @@
 import "./App.css";
+import Card from "./components/Card/Card";
+import Header from "./components/Header/Header";
+import SearchForm from "./components/SearchForm/SearchForm";
+
+const cards = [
+  {
+    title: "facebook/react",
+    descriprion: "placeholder descriprion",
+    stars: 500,
+    forks: 100,
+  },
+  {
+    title: "vue/vue",
+    descriprion: "placeholder descriprion",
+    stars: 500,
+    forks: 100,
+  },
+  {
+    title: "sveltejs/svelte",
+    descriprion: "placeholder descriprion",
+    stars: 500,
+    forks: 100,
+  },
+];
 
 function App() {
+  const arrayCards = cards.map((card) => (
+    <Card
+      title={card.title}
+      descriprion={card.descriprion}
+      stars={card.stars}
+      forks={card.forks}
+    />
+  ));
   return (
     <>
-      <header>
-        <div className="content-wrapper">
-          <h1>Welcome to the JSHeroes Bootcamp!</h1>
-        </div>
-        <img className="bear" src="/js-heroes-bear.png" />
-      </header>
-
+      <Header />
       <main>
-        <form className="search-form">
-          <input className="input" />
-          <button className="button">Search</button>
-        </form>
-
-        <ul className="repo-cards">
-          <li className="repo-card">
-            <span className="title">facebook/react</span>
-            <span className="description">placeholder description</span>
-            <section className="footer">
-              <div>Stars: 500</div>
-              <div>Forks: 100</div>
-            </section>
-          </li>
-
-          <li className="repo-card">
-            <span className="title">vuejs/vue</span>
-            <span className="description">placeholder description</span>
-            <section className="footer">
-              <div>Stars: 500</div>
-              <div>Forks: 100</div>
-            </section>
-          </li>
-
-          <li className="repo-card">
-            <span className="title">sveltejs/svelte</span>
-            <span className="description">placeholder description</span>
-            <section className="footer">
-              <div>Stars: 500</div>
-              <div>Forks: 100</div>
-            </section>
-          </li>
-        </ul>
+        <SearchForm />
+        <ul className="repo-cards">{arrayCards}</ul>
       </main>
     </>
   );
